@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Código QR</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .qr-container {
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px dashed #ccc;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+        
+        #qrcode {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .url-display {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 20px 0;
+            word-break: break-all;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(106, 17, 203, 0.5);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .info {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e8f4ff;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #31708f;
+        }
+        
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Código QR</h1>
+        
+        <p class="description">Este código QR redirigirá a la página web ubicada en la ruta local especificada.</p>
+        
+        <div class="url-display">
+            file:///C:/Users/oscar/Desktop/U.Caldas/4.%20Semestre/Programacion%20Web%20I/html_css/index.html#
+        </div>
+        
+        <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="downloadQR()">Descargar QR</button>
+            <button onclick="window.print()">Imprimir QR</button>
+        </div>
+        
+        <div class="info">
+            <p>💡 Escanea este código QR con la cámara de tu teléfono para acceder rápidamente a la página.</p>
+            <p>⚠️ Nota: Esta es una ruta local, por lo que solo funcionará en el dispositivo donde está almacenada.</p>
+        </div>
+    </div>
+
+    <script>
+        // Generar el código QR al cargar la página
+        window.onload = function() {
+            const url = "file:///C:/Users/oscar/Desktop/U.Caldas/4.%20Semestre/Programacion%20Web%20I/html_css/index.html#";
+            
+            // Generar el código QR
+            QRCode.toCanvas(document.getElementById('qrcode'), url, {
+                width: 250,
+                margin: 1,
+                color: {
+                    dark: '#000000',
+                    light: '#ffffff'
+                }
+            }, function(error) {
+                if (error) console.error(error);
+            });
+        };
+        
+        // Función para descargar el código QR
+        function downloadQR() {
+            const canvas = document.querySelector("#qrcode canvas");
+            const link = document.createElement('a');
+            link.download = 'codigo-qr.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>

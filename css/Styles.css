@@ -1,0 +1,95 @@
+body{
+    font-family: Arial, sans-serif; /* Fuente General */
+    margin: 0; /* Elimina Margenes por Defecto */
+    padding: 0; /* Elimina Margenes por Defecto */
+    background-color: #ddf5c2;
+    color: #333; /* Color de Texto, Grias Oscuro */
+}
+
+h1, h2 {
+    text-align: center; /* Centra Titulos */
+    color: #222; /* Color mas Oscuro para Titulos */
+}
+
+/* MENU DE NAVEGACION */
+nav{
+    background-color: rgba(151, 149, 24, 0.979); /* Fondo azul */
+    color: #080808;
+    padding: 10px; /* Espacio al Interior del nav */
+}
+
+nav ul {
+    list-style: none; /* Quita las Viñetas de la lista */
+    margin: 0; /* Quita Margenes */
+    padding: 0; /* Quita el padding o Margenes Internas */
+    display: flex; /* Hace que los elementos se alineen en fila */
+    justify-content: center; /* Centra Horizontalmente los Items */
+}
+
+nav ul li{
+    margin: 0 15px; /* Espacio Entre las Opciones de los Items */
+}
+
+nav ul li a{
+    color: #080808; /* Texto Negro */
+    text-decoration: none; /* Quita el Subrayado */
+    font-weight: bold; /* Texto en Negrita */
+    border-radius: Spx; /* Bordes Redondeados */
+    padding: 8px 15px; /* Espacio al Interior del Enlace */
+}
+
+div{
+    text-align: center; /* Centrar Imagenes, pero debe estar dentro de un div */
+}
+
+nav ul li a:hover{
+    background-color: #f9fcfd; /* Efecto de Color Cuando el Mouse pasa por Encima */
+}
+
+/* SECCIONES */
+section{
+    padding: 40px 20px; /* Espacio Interno de las Secciones */    
+}
+
+section p{
+    text-align: justify; /* Justifica el Texto */
+    line-height: 1.6; /* Separacion Entre Renglones */
+    margin: 0 60px;
+    font-weight: bold;
+}
+
+.imagen{
+    display: blok; /* La Imagen Ocupa Todo el Ancho Disponible */
+    margin: 20px auto; /* Centra la Imagen Horizontalmente y Añade Espacio Arriba y Abjo */
+    width: 300px; /* Ancho Fijo para las Imagenes */
+    border-radius: 20px; /* Bordes Redondeados */
+    box-shadow: 9px 9px 9px rgba(0,0,0,0.6); /* Sombra */
+}
+
+footer{
+    background-color: #222; /* Fondo Oscuro */
+    color: white; /* Texto Blanco */
+    text-align: center; /* Texto Centrado */
+    padding: 15px 10px; /* Espaciado Superior */
+    margin-top: 40px;
+}
+
+footer p{
+    margin: 0; /* Quitar Margenes */
+    font-size: 14px; /* Tamaño de Fuente */
+}
+
+.btn-bootstrap{
+    display: inline-block;
+    padding: 10px 20px; /* Espacio interno entre ambos botones */
+    background-color: #0d6efd; /* Color azul el boton */
+    color: white; /* Colo de la letra */
+    text-decoration: none;
+    border-radius: 5px; /* Esquinas redondeadas */
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Suaviza el cambio de color */
+}
+
