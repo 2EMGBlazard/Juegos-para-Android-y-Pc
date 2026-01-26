@@ -1,136 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantilla HTML + CSS</title>
-    <link rel="stylesheet" href="css/Styles.css">
+    <title>GameHub | Juegos para Android</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --dark-color: #121212;
+            --light-color: #f8f9fa;
+            --accent-color: #ff4d94;
+            --card-bg: #1a1a2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+            color: var(--light-color);
+            min-height: 100vh;
+            padding-top: 76px; /* Para compensar la navbar fija */
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Navegación */
+        .navbar {
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at 50% 50%, rgba(106, 17, 203, 0.2) 0%, transparent 50%);
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #6a11cb, #2575fc, #ff4d94);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Botones */
+        .btn-bootstrap {
+            display: inline-block;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-bootstrap:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.4);
+            color: white;
+        }
+        
+        /* Grid de Juegos */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+        
+        .game-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        
+        .game-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .game-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid rgba(106, 17, 203, 0.5);
+        }
+        
+        .game-info {
+            padding: 15px;
+        }
+        
+        .game-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        /* Sección Acerca de */
+        #acerca {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 60px 20px;
+            margin-top: 40px;
+            border-top: 2px solid rgba(106, 17, 203, 0.3);
+        }
+        
+        #acerca h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            color: #fff;
+            position: relative;
+        }
+        
+        #acerca h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        #acerca p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 20, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 2px solid rgba(106, 17, 203, 0.3);
+        }
+        
+        footer p {
+            color: #aaa;
+            margin: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 15px;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .btn-bootstrap {
+                display: block;
+                margin: 10px auto;
+                width: 90%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Menu de Navegacion -->
-    <nav>
-        <ul>
-            <!-- Enlace a Youtube -->
-            <li><a href="https://www.youtube.com/watch?v=gZo6KMqcfdM&pp=ygUYbm9ndWVpcmEgdGhlIGJveCBwYXJrb3Vy"
-                    target="_blank">Youtube</a></li>
-            <!-- Enlace a la misma pagina -->
-            <li><a href="#acerca">Acerca de</a></li>
-            <!-- Enlace a Otra Pestaña -->
-            <li><a href="Saludo.html">Saludo</a></li>
-        </ul>
+    <!-- Menú de Navegación Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-gamepad me-2"></i>GameHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.youtube.com/watch?v=gZo6KMqcfdM&pp=ygUYbm9ndWVpcmEgdGhlIGJveCBwYXJrb3Vy" target="_blank"><i class="fab fa-youtube me-1"></i> YouTube</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#acerca"><i class="fas fa-info-circle me-1"></i> Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="boot.html"><i class="fas fa-desktop me-1"></i> Juegos PC</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
     <header>
-        <h1>ELIJE EL QUE MAS TE GUSTE... ES GRATIS</h1>
+        <h1>ELIJE EL QUE MÁS TE GUSTE... ES GRATIS</h1>
+        <div class="mt-4">
+            <button class="btn-bootstrap" onclick="window.open('boot.html', '_self')">
+                <i class="fas fa-desktop me-2"></i>Cambiar a Juegos de PC
+            </button>
+            <a href="https://www.youtube.com/watch?v=HBLYd-l2dpE" class="btn-bootstrap" target="_blank">
+                <i class="fab fa-youtube me-2"></i>Richter Speedrun in 5:08
+            </a>
+        </div>
     </header>
 
-    <div>
-        <!-- BOTONES BOOTSTRAP -->
-        <button class="btn-bootstrap"
-            onclick="windows.open('https://mega.nz/folder/QexWjJ6Q#8jwRpPay6kR0Rh-gKNe76w', '_blank')">Descarga el
-            Juego</button>
-        <a href="https://www.youtube.com/watch?v=HBLYd-l2dpE" class="btn-bootstrap" target="_blank">Richter Speedrun in
-            5:08</a>
+    <!-- Grid de Juegos -->
+    <div class="games-grid">
+        <!-- DANDARA -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/RaIEWZLQ#rqI5VSw7_3xkbzFvD3DBivCJsoc2Pbo6z5a9nxAcV9Q" target="_blank">
+                <img src="Img/DANDARA.jpg" alt="DANDARA">
+                <div class="game-info">
+                    <h3 class="game-title">DANDARA</h3>
+                    <p class="text-muted mb-0">Juego de plataformas único</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Hollow Knight -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/ZGwxzbDZ#ij7crhtqxgK4owg_5EjS1h3LGmyHniu8RoLF3m3dFG0" target="_blank">
+                <img src="Img/Hollow Knight.jpg" alt="Hollow Knight">
+                <div class="game-info">
+                    <h3 class="game-title">HOLLOW KNIGHT</h3>
+                    <p class="text-muted mb-0">Aventura de acción épica</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Hollow Knight Silksong -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/cSZwULAC#AY_vyoKsR6Vhjz76GXLq8tQF-PBUbyop4LCEnDqNH1I" target="_blank">
+                <img src="Img/Hollow-knight silksong.jpg" alt="Hollow Knight Silksong">
+                <div class="game-info">
+                    <h3 class="game-title">HOLLOW KNIGHT: SILKSONG</h3>
+                    <p class="text-muted mb-0">Secuela muy esperada</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Castlevania -->
+        <div class="game-item">
+            <a href="https://mega.nz/folder/QexWjJ6Q#8jwRpPay6kR0Rh-gKNe76w" target="_blank">
+                <img src="Img/Castlevania.jpg" alt="Castlevania">
+                <div class="game-info">
+                    <h3 class="game-title">CASTLEVANIA</h3>
+                    <p class="text-muted mb-0">Symphony of the Night</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Little Nightmares -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/IfwV0IQY#5-M4CjjeVWPeorV4VsK8jXFTdvFRsRB13UDbmi5FRLs" target="_blank">
+                <img src="Img/Little Nightmares.jpg" alt="Little Nightmares">
+                <div class="game-info">
+                    <h3 class="game-title">LITTLE NIGHTMARES</h3>
+                    <p class="text-muted mb-0">Aventura de terror</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Monument Valley -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/RfBjzSrL#SgA_JMISv7UBx35319_xQQxYFBgE8gWe48qUxSUJIOI" target="_blank">
+                <img src="Img/Monument Valley.jpg" alt="Monument Valley">
+                <div class="game-info">
+                    <h3 class="game-title">MONUMENT VALLEY</h3>
+                    <p class="text-muted mb-0">Arquitecturas imposibles</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Monument Valley II -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/kbRHQS4A#fmF2ECZt3Z9mojgDO_FlUkXsXurYUSz7-QIHLF4-pkU" target="_blank">
+                <img src="Img/Monument Valley II.jpg" alt="Monument Valley II">
+                <div class="game-info">
+                    <h3 class="game-title">MONUMENT VALLEY II</h3>
+                    <p class="text-muted mb-0">Secuela del éxito</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Blasphemous -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/cWwAVLbI#5QzsI_vDkKU-4yLxVdYjDnT7CFwVwvnIDIK__7q8FA8" target="_blank">
+                <img src="Img/Blasphemous.jpg" alt="Blasphemous">
+                <div class="game-info">
+                    <h3 class="game-title">BLASPHEMOUS</h3>
+                    <p class="text-muted mb-0">Acción y plataformas</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Terraria -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/8WQlFZab#_PKL3VkS2DUxpxI-3G2Rj3HbWFFdCJ_hYKkOiqDatz8" target="_blank">
+                <img src="Img/Terraria.jpg" alt="Terraria">
+                <div class="game-info">
+                    <h3 class="game-title">TERRARIA</h3>
+                    <p class="text-muted mb-0">Aventura y construcción</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Minecraft -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/QDJxHaiZ#9EvvSUIsbNetjfa-Uxy8iBNgEdn-by594m-lIfRKAwA" target="_blank">
+                <img src="Img/Minecraft.jpg" alt="Minecraft">
+                <div class="game-info">
+                    <h3 class="game-title">MINECRAFT</h3>
+                    <p class="text-muted mb-0">Mundo abierto creativo</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Dead Cells -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/EOJQVYpK#yehzYxoex5hiWaP3fDWl5aBzc3DE95lRZNL8aI2kplA" target="_blank">
+                <img src="Img/Dead Cells.jpg" alt="Dead Cells">
+                <div class="game-info">
+                    <h3 class="game-title">DEAD CELLS</h3>
+                    <p class="text-muted mb-0">Roguelike de acción</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Skul -->
+        <div class="game-item">
+            <a href="https://mega.nz/file/9fJ12LgC#s2F0Veh91pdHKJTj1cLa7Odita4eqWUEa1gpMV2FK_c" target="_blank">
+                <img src="Img/Skul.jpg" alt="Skul">
+                <div class="game-info">
+                    <h3 class="game-title">SKUL</h3>
+                    <p class="text-muted mb-0">Aventura pixel art</p>
+                </div>
+            </a>
+        </div>
     </div>
 
-    <div>
-        <!-- Imagenes -->
-        <a href="https://mega.nz/file/RaIEWZLQ#rqI5VSw7_3xkbzFvD3DBivCJsoc2Pbo6z5a9nxAcV9Q" target="_blank">
-            <img src="Img/DANDARA.jpg" class="imagen" alt="DANDARA">
-        </a>
-
-        <a href="https://mega.nz/file/ZGwxzbDZ#ij7crhtqxgK4owg_5EjS1h3LGmyHniu8RoLF3m3dFG0" target="_blank">
-            <img src="Img/Hollow Knight.jpg" class="imagen" alt="Hollow Knight">
-        </a>
-
-        <a href="https://mega.nz/file/cSZwULAC#AY_vyoKsR6Vhjz76GXLq8tQF-PBUbyop4LCEnDqNH1I" target="_blank">
-            <img src="Img/Hollow-knight silksong.jpg" class="imagen" alt="Hollow-knight silksong">
-        </a>
-
-        <a href="https://mega.nz/folder/QexWjJ6Q#8jwRpPay6kR0Rh-gKNe76w" target="_blank">
-            <img src="Img/Castlevania.jpg" class="imagen" alt="Castlevania Symphony of the night">
-        </a>
-
-        <a href="https://mega.nz/file/IfwV0IQY#5-M4CjjeVWPeorV4VsK8jXFTdvFRsRB13UDbmi5FRLs" target="_blank">
-            <img src="Img/Little Nightmares.jpg" class="imagen" alt="Little Nightmares">
-        </a>
-
-        <a href="https://mega.nz/file/RfBjzSrL#SgA_JMISv7UBx35319_xQQxYFBgE8gWe48qUxSUJIOI" target="_blank">
-            <img src="Img/Monument Valley.jpg" class="imagen" alt="Monument Valley">
-        </a>
-        
-        <a href="" target="_blank">
-            <img src="Img/Monument Valley II.jpg" class="imagen" alt="Monument Valley II">
-        </a>
-
-        <a href="https://mega.nz/file/cWwAVLbI#5QzsI_vDkKU-4yLxVdYjDnT7CFwVwvnIDIK__7q8FA8" target="_blank">
-            <img src="Img/Blasphemous.jpg" class="imagen" alt="Blasphemous">
-        </a>
-
-        <a href="https://mega.nz/file/8WQlFZab#_PKL3VkS2DUxpxI-3G2Rj3HbWFFdCJ_hYKkOiqDatz8" target="_blank">
-            <img src="Img/Terraria.jpg" class="imagen" alt="Terraria">
-        </a>
-        
-        <a href="https://mega.nz/file/QDJxHaiZ#9EvvSUIsbNetjfa-Uxy8iBNgEdn-by594m-lIfRKAwA" target="_blank">
-            <img src="Img/Minecraft.jpg" class="imagen" alt="Minecraft">
-        </a>
-
-        <a href="https://mega.nz/file/EOJQVYpK#yehzYxoex5hiWaP3fDWl5aBzc3DE95lRZNL8aI2kplA" target="_blank">
-            <img src="Img/Dead Cells.jpg" class="imagen" alt="Dead Cells">
-        </a>
-        
-<!--     
-        
-        <img src="Img/Castlevania 10.jpg" class="imagen" alt="SYMPHONY OF THE NIGHT">
-        <img src="Img/Castlevania 11.jpg" class="imagen" alt="SYMPHONY OF THE NIGHT"> -->
-    </div>
-
-    <!-- Seccion Interna -->
+    <!-- Sección Acerca de -->
     <section id="acerca">
-        <h2>Acerca de</h2>
-        <p>Pagina de ejemplo CSS.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec enim ligula. Morbi sed dictum felis. Donec
-            risus felis, rhoncus vitae neque sit amet, posuere suscipit nunc. Donec varius luctus sapien, eu scelerisque
-            quam rhoncus eget. Pellentesque eget varius lacus. Cras dignissim, mi vitae iaculis ultricies, est felis
-            pellentesque sapien,
-            sagittis viverra dui leo eget neque. Sed non dolor a arcu mollis vulputate. Vivamus pulvinar dolor nisi, sed
-            rhoncus urna convallis vel. Aliquam ac odio eget risus luctus iaculis in sit amet augue. In hac habitasse
-            platea dictumst. Nam non lacus auctor, elementum nisi id, maximus elit. Ut eget justo est.
-            Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean augue tortor, euismod et fringilla
-            varius, placerat id odio. Integer bibendum lectus ac mauris rhoncus, eget tempor massa commodo. Pellentesque
-            placerat nulla nec justo fringilla vestibulum. Ut ultrices lorem ut justo semper scelerisque.
-            Aliquam eu urna tellus. Nam pulvinar vestibulum vestibulum. Mauris quis egestas purus. Donec faucibus dolor
-            eget nisl tincidunt, eget congue neque ornare. Integer et lorem urna. Vivamus tincidunt aliquet iaculis.
-            Fusce bibendum tempus sodales. Nam imperdiet maximus odio et ultricies. Quisque id tortor quis quam auctor
-            euismod.
-            Sed pulvinar metus arcu, non vulputate dolor ornare in. Donec placerat mauris porta ex auctor, vitae
-            imperdiet risus posuere. Mauris a ligula feugiat, egestas sapien ut, fermentum velit. Phasellus fringilla
-            sit amet dui sed consequat. In ut facilisis sem. Ut enim elit, vulputate sed tellus ut, tincidunt auctor
-            arcu.
-            Phasellus sit amet orci mattis, ullamcorper leo commodo, imperdiet mauris. Mauris luctus sapien non enim
-            condimentum lacinia. Curabitur hendrerit aliquam neque, rutrum dapibus massa elementum eget. Suspendisse
-            pellentesque lorem ante, sed rhoncus lectus efficitur accumsan.
-            Donec varius sit amet nulla nec dignissim. Fusce ut consectetur quam, quis consequat mi. Integer dignissim
-            augue nulla, sed vehicula urna molestie eget. Phasellus condimentum dictum dignissim. Phasellus hendrerit
-            blandit rutrum. Donec non diam finibus, faucibus est condimentum, suscipit odio. Etiam blandit leo quis
-            tempor ornare.
-            Sed luctus ligula purus, vel tincidunt neque eleifend mollis. Pellentesque efficitur sit amet lacus non
-            dapibus. Pellentesque scelerisque leo mi, vel luctus mauris semper in. Nam id ipsum fermentum, vestibulum
-            massa vitae, rutrum ligula. Nunc non lectus viverra ligula dapibus auctor. Nam posuere leo leo, non
-            consectetur justo elementum vitae.
-            Nulla non iaculis elit. Vivamus dignissim nec sem ac accumsan. Praesent condimentum mollis massa, sit amet
-            mattis sem mattis in. Ut vel nulla a libero bibendum laoreet in nec turpis. Nunc et justo a urna rutrum
-            iaculis id vel erat. Praesent lorem elit, lobortis sed dapibus eu, scelerisque non dui.
-            Etiam quis malesuada arcu. Nunc vestibulum justo vel orci consectetur, at hendrerit ante fringilla.
-            Phasellus vehicula, leo sed sodales venenatis, nisi mi feugiat libero, id vestibulum tortor libero ut magna.
-            Integer metus sem, sodales et nisl sit amet, pretium semper orci.
+        <h2>Acerca de GameHub</h2>
+        <p>
+            Esta página es un proyecto en evolución dedicado a reunir títulos destacados 
+            tanto para Android como para PC. Por ahora, comenzamos con una selección de juegos móviles indie 
+            y de diseño único, pero nuestra visión es expandirnos hacia experiencias multiplataforma, 
+            ofreciendo recomendaciones, reseñas y acceso a mundos digitales memorables. 
+            
+            El objetivo es crear un espacio donde jugadores encuentren inspiración y disfrute, 
+            sin importar el dispositivo que usen.
+            
+            Poco a poco, seguiremos creciendo junto a la comunidad gamer.
         </p>
     </section>
 
     <footer>
-        <p>Derechos Reservados &Copy; 2025 Oscar Patiño</p>
+        <p>Derechos Reservados &copy; 2025 Oscar Patiño | GameHub</p>
     </footer>
-</body>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Efecto de aparición para las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameItems = document.querySelectorAll('.game-item');
+            
+            gameItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
 </html>

@@ -1,7 +1,7 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
     <head>
-        <title>Title</title>
+        <title>GameHub | Juegos para Android y PC</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -16,16 +16,112 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        
+        <!-- Font Awesome para iconos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+        
+        <!-- Estilos personalizados -->
+        <link rel="stylesheet" href="css/styles.css">
     </head>
 
     <body>
+        <!-- Navegación -->
         <header>
-            <!-- place navbar here -->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="fas fa-gamepad me-2"></i>GameHub
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#juegos">Juegos Android</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="boot.html">Juegos PC</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#acerca">Acerca de</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </header>
-        <main></main>
-        <footer>
-            <!-- place footer here -->
+        
+        <main class="pt-5">
+            <!-- Contenido principal de la página Bootstrap -->
+            <div class="container mt-5 pt-4">
+                <h1 class="text-center my-5">Próximamente: Juegos para PC</h1>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info text-center">
+                            <h4><i class="fas fa-desktop me-2"></i>Sección en Desarrollo</h4>
+                            <p class="mb-0">Estamos preparando una increíble selección de juegos para PC. ¡Vuelve pronto!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placeholder para futuros juegos de PC -->
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-4">
+                        <div class="card game-card-pc">
+                            <img src="https://via.placeholder.com/400x250/2575fc/ffffff?text=PC+Game+1" class="card-img-top" alt="Juego PC 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Próximamente</h5>
+                                <p class="card-text">Juego de PC en desarrollo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card game-card-pc">
+                            <img src="https://via.placeholder.com/400x250/6a11cb/ffffff?text=PC+Game+2" class="card-img-top" alt="Juego PC 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Próximamente</h5>
+                                <p class="card-text">Juego de PC en desarrollo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card game-card-pc">
+                            <img src="https://via.placeholder.com/400x250/ff4d94/ffffff?text=PC+Game+3" class="card-img-top" alt="Juego PC 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Próximamente</h5>
+                                <p class="card-text">Juego de PC en desarrollo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>GameHub</h5>
+                        <p>Tu portal de juegos para Android y PC</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="index.html" class="btn btn-outline-light btn-sm">Volver a Juegos Android</a>
+                    </div>
+                </div>
+                <hr class="bg-light">
+                <div class="text-center">
+                    <p class="mb-0">&copy; 2025 GameHub. Todos los derechos reservados.</p>
+                </div>
+            </div>
         </footer>
+
         <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
