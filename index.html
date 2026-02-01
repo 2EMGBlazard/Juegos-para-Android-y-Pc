@@ -14,233 +14,26 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Estilos comunes -->
+    <link rel="stylesheet" href="css/common.css">
+    
     <style>
-        :root {
-            --primary-color: #6a11cb;
-            --secondary-color: #2575fc;
-            --dark-color: #121212;
-            --light-color: #f8f9fa;
-            --accent-color: #ff4d94;
-            --card-bg: #1a1a2e;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
-            color: var(--light-color);
-            min-height: 100vh;
-            padding-top: 76px; /* Para compensar la navbar fija */
-        }
-        
-        h1, h2, h3, h4, h5 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-        }
-        
-        /* Navegación */
-        .navbar {
-            background: rgba(10, 10, 20, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        .navbar-brand {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .nav-link {
-            color: #fff !important;
-            font-weight: 500;
-            margin: 0 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--accent-color) !important;
-            transform: translateY(-2px);
-        }
-        
-        /* Encabezado */
-        header {
-            text-align: center;
-            padding: 40px 20px;
+        /* Estilos específicos para Android si los necesitas */
+        .encabezado-android {
             background: radial-gradient(circle at 50% 50%, rgba(106, 17, 203, 0.2) 0%, transparent 50%);
-            margin-bottom: 40px;
         }
         
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #6a11cb, #2575fc, #ff4d94);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* Botones */
-        .btn-bootstrap {
-            display: inline-block;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-bootstrap:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.4);
-            color: white;
-        }
-        
-        /* Grid de Juegos */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto 50px;
-        }
-        
-        .game-item {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 100%;
-        }
-        
-        .game-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
-            border-color: var(--primary-color);
-        }
-        
-        .game-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 2px solid rgba(106, 17, 203, 0.5);
-        }
-        
-        .game-info {
-            padding: 15px;
-        }
-        
-        .game-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #fff;
-            font-weight: 600;
-        }
-        
-        /* Sección Acerca de */
-        #acerca {
-            background: rgba(10, 10, 20, 0.8);
-            padding: 60px 20px;
-            margin-top: 40px;
-            border-top: 2px solid rgba(106, 17, 203, 0.3);
-        }
-        
-        #acerca h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-            color: #fff;
-            position: relative;
-        }
-        
-        #acerca h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        #acerca p {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-            color: #ccc;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(10, 10, 20, 0.95);
-            padding: 30px 20px;
-            text-align: center;
-            border-top: 2px solid rgba(106, 17, 203, 0.3);
-        }
-        
-        footer p {
-            color: #aaa;
-            margin: 0;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                padding: 15px;
-            }
-            
-            body {
-                padding-top: 70px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .btn-bootstrap {
-                display: block;
-                margin: 10px auto;
-                width: 90%;
-                max-width: 300px;
-                text-align: center;
-            }
+        .etiqueta-android {
+            background: linear-gradient(to right, #6a11cb, #9c27b0);
         }
     </style>
 </head>
 
 <body>
-    <!-- Menú de Navegación Bootstrap -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <!-- Menú de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-gamehub fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand logo-gamehub" href="index.html">
                 <i class="fas fa-gamepad me-2"></i>GameHub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -249,163 +42,179 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> Inicio</a>
+                        <a class="nav-link enlace-nav activo" href="index.html">
+                            <i class="fas fa-mobile-alt me-1"></i> Android
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.youtube.com/watch?v=gZo6KMqcfdM&pp=ygUYbm9ndWVpcmEgdGhlIGJveCBwYXJrb3Vy" target="_blank"><i class="fab fa-youtube me-1"></i> YouTube</a>
+                        <a class="nav-link enlace-nav" href="Bootstrap.html">
+                            <i class="fas fa-desktop me-1"></i> PC
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#acerca"><i class="fas fa-info-circle me-1"></i> Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="boot.html"><i class="fas fa-desktop me-1"></i> Juegos PC</a>
+                        <a class="nav-link enlace-nav" href="#acerca">
+                            <i class="fas fa-info-circle me-1"></i> Acerca de
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header>
-        <h1>ELIJE EL QUE MÁS TE GUSTE... ES GRATIS</h1>
+    <!-- Encabezado -->
+    <header class="encabezado-pagina encabezado-android">
+        <h1 class="titulo-principal">ELIJE EL QUE MÁS TE GUSTE... ES GRATIS</h1>
         <div class="mt-4">
-            <button class="btn-bootstrap" onclick="window.open('boot.html', '_self')">
+            <a href="Bootstrap.html" class="btn-gamehub">
                 <i class="fas fa-desktop me-2"></i>Cambiar a Juegos de PC
-            </button>
-            <a href="https://www.youtube.com/watch?v=HBLYd-l2dpE" class="btn-bootstrap" target="_blank">
+            </a>
+            <a href="https://www.youtube.com/watch?v=HBLYd-l2dpE" class="btn-gamehub" target="_blank">
                 <i class="fab fa-youtube me-2"></i>Richter Speedrun in 5:08
             </a>
         </div>
     </header>
 
-    <!-- Grid de Juegos -->
-    <div class="games-grid">
+    <!-- Grid de Juegos Android -->
+    <div class="grid-juegos">
         <!-- DANDARA -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/RaIEWZLQ#rqI5VSw7_3xkbzFvD3DBivCJsoc2Pbo6z5a9nxAcV9Q" target="_blank">
                 <img src="Img/DANDARA.jpg" alt="DANDARA">
-                <div class="game-info">
-                    <h3 class="game-title">DANDARA</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">DANDARA</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Juego de plataformas único</p>
                 </div>
             </a>
         </div>
 
         <!-- Hollow Knight -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/ZGwxzbDZ#ij7crhtqxgK4owg_5EjS1h3LGmyHniu8RoLF3m3dFG0" target="_blank">
                 <img src="Img/Hollow Knight.jpg" alt="Hollow Knight">
-                <div class="game-info">
-                    <h3 class="game-title">HOLLOW KNIGHT</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">HOLLOW KNIGHT</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Aventura de acción épica</p>
                 </div>
             </a>
         </div>
 
         <!-- Hollow Knight Silksong -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/cSZwULAC#AY_vyoKsR6Vhjz76GXLq8tQF-PBUbyop4LCEnDqNH1I" target="_blank">
                 <img src="Img/Hollow-knight silksong.jpg" alt="Hollow Knight Silksong">
-                <div class="game-info">
-                    <h3 class="game-title">HOLLOW KNIGHT: SILKSONG</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">HOLLOW KNIGHT: SILKSONG</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Secuela muy esperada</p>
                 </div>
             </a>
         </div>
 
         <!-- Castlevania -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/folder/QexWjJ6Q#8jwRpPay6kR0Rh-gKNe76w" target="_blank">
                 <img src="Img/Castlevania.jpg" alt="Castlevania">
-                <div class="game-info">
-                    <h3 class="game-title">CASTLEVANIA</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">CASTLEVANIA</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Symphony of the Night</p>
                 </div>
             </a>
         </div>
 
         <!-- Little Nightmares -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/IfwV0IQY#5-M4CjjeVWPeorV4VsK8jXFTdvFRsRB13UDbmi5FRLs" target="_blank">
                 <img src="Img/Little Nightmares.jpg" alt="Little Nightmares">
-                <div class="game-info">
-                    <h3 class="game-title">LITTLE NIGHTMARES</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">LITTLE NIGHTMARES</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Aventura de terror</p>
                 </div>
             </a>
         </div>
 
         <!-- Monument Valley -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/RfBjzSrL#SgA_JMISv7UBx35319_xQQxYFBgE8gWe48qUxSUJIOI" target="_blank">
                 <img src="Img/Monument Valley.jpg" alt="Monument Valley">
-                <div class="game-info">
-                    <h3 class="game-title">MONUMENT VALLEY</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">MONUMENT VALLEY</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Arquitecturas imposibles</p>
                 </div>
             </a>
         </div>
 
         <!-- Monument Valley II -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/kbRHQS4A#fmF2ECZt3Z9mojgDO_FlUkXsXurYUSz7-QIHLF4-pkU" target="_blank">
                 <img src="Img/Monument Valley II.jpg" alt="Monument Valley II">
-                <div class="game-info">
-                    <h3 class="game-title">MONUMENT VALLEY II</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">MONUMENT VALLEY II</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Secuela del éxito</p>
                 </div>
             </a>
         </div>
 
         <!-- Blasphemous -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/cWwAVLbI#5QzsI_vDkKU-4yLxVdYjDnT7CFwVwvnIDIK__7q8FA8" target="_blank">
                 <img src="Img/Blasphemous.jpg" alt="Blasphemous">
-                <div class="game-info">
-                    <h3 class="game-title">BLASPHEMOUS</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">BLASPHEMOUS</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Acción y plataformas</p>
                 </div>
             </a>
         </div>
 
         <!-- Terraria -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/8WQlFZab#_PKL3VkS2DUxpxI-3G2Rj3HbWFFdCJ_hYKkOiqDatz8" target="_blank">
                 <img src="Img/Terraria.jpg" alt="Terraria">
-                <div class="game-info">
-                    <h3 class="game-title">TERRARIA</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">TERRARIA</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Aventura y construcción</p>
                 </div>
             </a>
         </div>
 
         <!-- Minecraft -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/QDJxHaiZ#9EvvSUIsbNetjfa-Uxy8iBNgEdn-by594m-lIfRKAwA" target="_blank">
                 <img src="Img/Minecraft.jpg" alt="Minecraft">
-                <div class="game-info">
-                    <h3 class="game-title">MINECRAFT</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">MINECRAFT</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Mundo abierto creativo</p>
                 </div>
             </a>
         </div>
 
         <!-- Dead Cells -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/EOJQVYpK#yehzYxoex5hiWaP3fDWl5aBzc3DE95lRZNL8aI2kplA" target="_blank">
                 <img src="Img/Dead Cells.jpg" alt="Dead Cells">
-                <div class="game-info">
-                    <h3 class="game-title">DEAD CELLS</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">DEAD CELLS</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Roguelike de acción</p>
                 </div>
             </a>
         </div>
 
         <!-- Skul -->
-        <div class="game-item">
+        <div class="tarjeta-juego">
             <a href="https://mega.nz/file/9fJ12LgC#s2F0Veh91pdHKJTj1cLa7Odita4eqWUEa1gpMV2FK_c" target="_blank">
                 <img src="Img/Skul.jpg" alt="Skul">
-                <div class="game-info">
-                    <h3 class="game-title">SKUL</h3>
+                <div class="contenido-juego">
+                    <h3 class="titulo-juego">SKUL</h3>
+                    <span class="etiqueta-plataforma etiqueta-android">Android</span>
                     <p class="text-muted mb-0">Aventura pixel art</p>
                 </div>
             </a>
@@ -413,7 +222,7 @@
     </div>
 
     <!-- Sección Acerca de -->
-    <section id="acerca">
+    <section id="acerca" class="seccion-acerca">
         <h2>Acerca de GameHub</h2>
         <p>
             Esta página es un proyecto en evolución dedicado a reunir títulos destacados 
@@ -428,47 +237,14 @@
         </p>
     </section>
 
-    <footer>
+    <footer class="footer-gamehub">
         <p>Derechos Reservados &copy; 2025 Oscar Patiño | GameHub</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        // Smooth scroll para enlaces internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Efecto de aparición para las tarjetas
-        document.addEventListener('DOMContentLoaded', function() {
-            const gameItems = document.querySelectorAll('.game-item');
-            
-            gameItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        });
-    </script>
+    <!-- JavaScript común -->
+    <script src="js/common.js"></script>
 </body>
 </html>
